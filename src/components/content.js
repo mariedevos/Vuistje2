@@ -1,17 +1,23 @@
 import React from "react"
 
 import style from "./content.module.css"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-const Content = ({ from, to, message }) => {
+const Content = ({ title, text }) => {
   return (
-    <dl className={style.container}>
-      <dt className="visually-hidden">To</dt>
-      <dd className={style.to}>{to}</dd>
-      <dt className="visually-hidden">Message</dt>
-      <dd className={style.message}>{message}</dd>
-      <dt className="visually-hidden">From</dt>
-      <dd className={style.from}>{from}</dd>
-    </dl>
+    <>
+      <dl className={style.container}>
+        <dt className="visually-hidden">To</dt>
+        <dd className={style.to}>{title}</dd>
+        {/* <dd className={style.to}>{to}</dd> */}
+
+        <dt className="visually-hidden">text</dt>
+        <dd className={style.text}>{text}</dd>
+        {/* <dt className="visually-hidden">From</dt> */}
+        {/* <dd className={style.from}>{from}</dd> */}
+      </dl>
+      <section>{documentToReactComponents(text.json)}</section>
+    </>
   )
 }
 

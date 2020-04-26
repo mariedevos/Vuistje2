@@ -7,15 +7,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allContentfulVuist {
+        allContentfulPost {
           edges {
             node {
               id: contentful_id
-              to
-              from
-              message {
-                message
-              }
+              text_1
             }
           }
         }
@@ -27,15 +23,13 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors
   }
 
-  result.data.allContentfulVuist.edges.forEach(({ node }) => {
+  result.data.allContentfulPost.edges.forEach(({ node }) => {
     createPage({
       path: node.id,
       component: path.resolve(`./src/templates/vuistje.js`),
       context: {
         id: node.id,
-        from: node.from,
-        to: node.to,
-        message: node.message.message,
+        text: node.text_1,
       },
     })
   })

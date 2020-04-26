@@ -13,7 +13,7 @@ export default ({ pageContext }) => {
       <Vuist />
       <Content {...pageContext} />
       <p className={style.note}>
-        {pageContext.from} heeft jou dit vuistje gegeven.
+        {pageContext.title} heeft jou dit vuistje gegeven.
         <br />
         Je kan ook <Link to="/create">jouw eigen vuistjes uitdelen</Link> als je
         wil.

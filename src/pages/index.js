@@ -1,6 +1,5 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import style from "./index.module.css"
@@ -10,8 +9,8 @@ const IndexPage = ({ data }) => (
     <SEO title="Home" />
 
     <ul>
-      {data.allContentfulVuist.edges.map(({ node }) => (
-        <li>
+      {data.allContentfulPost.edges.map(({ node }) => (
+        <li key={node.id}>
           <Link to={node.id}>{node.id}</Link>
         </li>
       ))}
@@ -26,7 +25,7 @@ export default IndexPage
 
 export const query = graphql`
   query {
-    allContentfulVuist {
+    allContentfulPost {
       edges {
         node {
           id: contentful_id
